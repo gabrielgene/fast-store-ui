@@ -5,9 +5,9 @@ const icons = {
   },
 };
 
-export default function Icon({ icon }) {
+export default function Icon({ icon, onClick }) {
   return (
-    <div>
+    <div onClick={onClick}>
       <img {...icons[icon]} />
     </div>
   );
