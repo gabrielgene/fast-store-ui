@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+// import '@fontsource/metropolis';
+// import "@fontsource/metropolis/500.css"
 
 export default function Home() {
   return (
