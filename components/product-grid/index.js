@@ -1,10 +1,35 @@
-import Image from 'next/image';
+import styled from 'styled-components';
+import ProductImage from '~/components/product-image';
+import MUIGridList from '@material-ui/core/GridList';
+import MUIGridListTile from '@material-ui/core/GridListTile';
 
-export default function ProductGrind() {
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  justify-content: space-around;
+`;
+
+const GridList = styled(MUIGridList)`
+  flex-wrap: nowrap;
+  transform: 'translateZ(0)';
+`;
+
+export default function ProductGrid({ images }) {
   return (
-    <div>
-      <Image src={`${SERVER_URL}${image[0].url}`} width={162} height={184} />
-      Teste
-    </div>
+    <Wrapper>
+      <GridList cols={2.5}>
+        {images.map((i) => (
+          <MUIGridListTile key={i.url}>
+            <ProductImage
+              src={i.url}
+              width={250}
+              height={300}
+              objectFit="cover"
+            />
+          </MUIGridListTile>
+        ))}
+      </GridList>
+    </Wrapper>
   );
 }
