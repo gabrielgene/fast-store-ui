@@ -6,6 +6,9 @@ const StyledButton = styled(MUIButton)`
   background-color: #db3022;
   color: #ffffff;
   height: 48px;
+  &:hover {
+    background-color: #db3022;
+  }
 `;
 
 export default function Button({ text, onClick }) {

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const Text24 = styled.div`
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  color: #222222;
+`;
+
 export const Text18 = styled.div`
   font-size: 18px;
   line-height: 22px;

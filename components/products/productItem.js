@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ProductImage from '~/components/product-image';
 import { Text14, Text18 } from '~/components/text';
 import { useRouter } from 'next/router';
+import { floatToPrice} from `~/utils/price`
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -24,7 +25,7 @@ export default function ProductItem({ image, name, price, id }) {
         height={184}
       />
       <Text18 style={{ fontWeight: 900 }}>{name}</Text18>
-      <Text14>R$ {`${price.toFixed(2)}`.replace('.', ',')}</Text14>
+      <Text14>{floatToPrice(price)}</Text14>
     </Wrapper>
   );
 }
