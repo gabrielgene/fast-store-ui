@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Image from 'next/image';
+import ProductImage from '~/components/product-image';
 import { Text14, Text18 } from '~/components/text';
 import { useRouter } from 'next/router';
 
@@ -7,11 +7,10 @@ const Wrapper = styled.div`
   padding: 16px;
 `;
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(ProductImage)`
   border-radius: 6px;
 `;
 
-const SERVER_URL = 'http://localhost:1337';
 
 export default function ProductItem({ image, name, price, id }) {
   const router = useRouter();
@@ -20,7 +19,7 @@ export default function ProductItem({ image, name, price, id }) {
     <Wrapper>
       <StyledImage
         onClick={() => router.push(`produto/${id}`)}
-        src={`${SERVER_URL}${image[0].url}`}
+        src={image[0].url}
         width={162}
         height={184}
       />
