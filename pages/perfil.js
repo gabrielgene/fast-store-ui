@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import client from '~/config/apollo-client';
+import client from '~/apollo/client';
 import Header from '~/components/header';
 import ProductsList from '~/components/products';
 import Navigation from '~/components/navigation';

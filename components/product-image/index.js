@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { SERVER_URI } from '~/config/apollo-client';
+import { SERVER_URI } from '~/apollo/client';
 
 export default function ProductImage(props) {
   const url = `${SERVER_URI}${props.src}`;

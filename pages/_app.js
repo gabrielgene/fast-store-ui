@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ApolloProvider } from '@apollo/client';
 import { CartProvider } from 'react-use-cart';
-import client from '~/config/apollo-client';
+import client from '~/apollo/client';
 
 import '../styles/globals.css';
 

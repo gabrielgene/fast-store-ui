@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client';
-import client from '~/config/apollo-client';
+import client from '~/apollo/client';
+import { GET_PRODUCTS } from '~/apollo/queries';
 
 import Header from '~/components/header';
 import ProductsList from '~/components/products';
@@ -17,18 +17,7 @@ export default function Home({ products }) {
 
 export async function getStaticProps(context) {
   const { data } = await client.query({
-    query: gql`
-      query Products {
-        products {
-          id
-          name
-          image {
-            url
-          }
-          price
-        }
-      }
-    `,
+    query: GET_PRODUCTS,
   });
 
   return {
