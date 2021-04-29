@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   bottom: 0;
   width: 100%;
 `;
+
 export default function Fixed({ children }) {
   return <Wrapper>{children}</Wrapper>;
 }

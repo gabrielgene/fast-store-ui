@@ -1,5 +1,9 @@
 import Head from 'next/head';
 import { StylesProvider } from '@material-ui/core/styles';
+import { ApolloProvider } from '@apollo/client';
+import { CartProvider } from 'react-use-cart';
+import client from '~/config/apollo-client';
+
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -11,9 +15,13 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         ></link>
       </Head>
-      <StylesProvider injectFirst>
-        <Component {...pageProps} />
-      </StylesProvider>
+      <ApolloProvider client={client}>
+        <CartProvider>
+          <StylesProvider injectFirst>
+            <Component {...pageProps} />
+          </StylesProvider>
+        </CartProvider>
+      </ApolloProvider>
     </>
   );
 }

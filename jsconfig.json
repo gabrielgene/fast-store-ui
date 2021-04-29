@@ -3,8 +3,9 @@
     "baseUrl": ".",
     "paths": {
       "~/components/*": ["components/*"],
-      "~/config/*": ["config/*"],
       "~/utils/*": ["utils/*"],
+      "~/scenes/*": ["scenes/*"],
+      "~/config/*": ["config/*"],
     }
   }
 }

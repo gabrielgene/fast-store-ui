@@ -27,7 +27,7 @@ export default function Header({ title, back }) {
   return (
     <Wrapper back={back}>
       <If condition={!!back}>
-        <Icon onClick={() => router.back()} icon="back" />
+        <Icon active onClick={() => router.back()} icon="back" />
       </If>
       <Text18>{title}</Text18>
       <Spacer />

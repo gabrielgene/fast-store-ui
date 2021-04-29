@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import ProductImage from '~/components/product-image';
 import { Text14, Text18 } from '~/components/text';
-import { useRouter } from 'next/router';
-import { floatToPrice} from `~/utils/price`
+import { floatToPrice } from '~/utils/price';
 
 const Wrapper = styled.div`
   padding: 16px;

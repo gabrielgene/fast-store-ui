@@ -4,11 +4,11 @@ import Header from '~/components/header';
 import ProductsList from '~/components/products';
 import Navigation from '~/components/navigation';
 
-export default function Products({ products }) {
+export default function Perfil({ products }) {
   return (
     <div>
-      <Header title="Produtos" />
-      <ProductsList products={products} />
+      <Header title="Perfil" />
+      {/* <ProductsList products={products} /> */}
       <Navigation />
     </div>
   );

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const Text34 = styled.div`
+  font-size: 34px;
+  line-height: 39px;
+  font-weight: 700;
+  color: #222222;
+`;
+
 export const Text24 = styled.div`
   font-size: 24px;
   line-height: 29px;
@@ -19,4 +26,11 @@ export const Text14 = styled.div`
   line-height: 20px;
   font-weight: 500;
   color: #222222;
+`;
+
+export const Text10 = styled.div`
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  color: #9b9b9b;
 `;
