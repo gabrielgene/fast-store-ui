@@ -2,9 +2,22 @@ import { gql } from '@apollo/client';
 
 export const GET_PRODUCTS = gql`
   query Products {
-    products {
+    notNewsProducts: products(where: { news: false }) {
       id
       name
+      category
+      news
+      image {
+        url
+      }
+      price
+    }
+
+    newsProducts: products(where: { news: true }) {
+      id
+      name
+      category
+      news
       image {
         url
       }
@@ -18,6 +31,8 @@ export const GET_PRODUCT_BY_ID = gql`
     product(id: $id) {
       id
       name
+      category
+      news
       image {
         url
       }

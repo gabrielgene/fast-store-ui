@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ProductItem from './productItem';
+import ProductItem from '../product-item';
 
 const Wrapper = styled.div`
   display: grid;
