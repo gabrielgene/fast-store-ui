@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { floatToPrice } from '~/utils/price';
 import ProductImage from '~/components/product-image';
-import { Text11, Text14, Text16 } from '~/components/text';
+import { Text14, Text16 } from '~/components/text';
 import Badge from '~/components/badge';
 import If from '~/components/if';
 
 const Wrapper = styled.div`
-  margin-left: 16px;
   position: relative;
 `;
 
 const StyledImage = styled(ProductImage)`
   border-radius: 6px;
+  object-fit: cover;
 `;
 
 const ProductBadge = styled(Badge)`
@@ -22,30 +22,24 @@ const ProductBadge = styled(Badge)`
   left: 8px;
 `;
 
-export default function ProductItem({
-  image,
-  name,
-  price,
-  id,
-  category,
-  news,
-}) {
+export default function ProductItem({ image, name, price, slug, news, style }) {
   const router = useRouter();
 
   return (
-    <Wrapper>
+    <Wrapper style={style}>
       <If condition={!!news}>
         <ProductBadge text="NEWS" />
       </If>
       <StyledImage
-        onClick={() => router.push(`produto/${id}`)}
+        onClick={() => router.push(`produto/${slug}`)}
         src={image[0].url}
-        width={148}
-        height={184}
+        width={160}
+        height={200}
       />
-      <Text11 style={{ marginTop: 6 }}>{category}</Text11>
-      <Text16 style={{ marginTop: 3 }}>{name}</Text16>
-      <Text14>{floatToPrice(price)}</Text14>
+      <Text16 style={{ marginTop: 8, width: 148 }}>{name}</Text16>
+      <Text14 style={{ marginTop: 4, width: 148 }}>
+        {floatToPrice(price)}
+      </Text14>
     </Wrapper>
   );
 }

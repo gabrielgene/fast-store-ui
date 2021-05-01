@@ -5,16 +5,20 @@ import If from '~/components/if';
 import { Text18 } from '~/components/text';
 
 const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 58px;
   display: flex;
   padding: 12px;
   align-items: center;
   ${({ back }) => {
     return back
-            ? `justify-content: space-between;`
-        : `justify-content: center;`;
+      ? `justify-content: space-between;`
+      : `justify-content: center;`;
   }};
   background-color: #f9f9f9;
+  z-index: 99999;
 `;
 
 const Spacer = styled.div`

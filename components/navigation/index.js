@@ -1,3 +1,4 @@
+import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Icon from '~/components/icon';
@@ -12,6 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   border-radius: 12px 12px 0px 0px;
+  z-index: 99999;
 `;
 
 const IconWrapper = styled.div`
@@ -45,10 +47,16 @@ function IconLabel({ icon, label, href }) {
 }
 
 export default function Navigation() {
+  const { isEmpty } = useCart();
   return (
     <Wrapper>
       <IconLabel icon="home" label="Inicio" href="/" />
-      <IconLabel icon="bag" label="Carrinho" href="/carrinho" />
+      <IconLabel icon="product" label="Produtos" href="/produtos" />
+      <IconLabel
+        icon={isEmpty ? 'bag' : 'bagItem'}
+        label="Sacola"
+        href="/sacola"
+      />
       <IconLabel icon="profile" label="Perfil" href="/perfil" />
     </Wrapper>
   );

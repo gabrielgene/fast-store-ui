@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import client from '~/apollo/client';
 import Header from '~/components/header';
-import ProductsList from '~/components/products';
+import ProductsList from '~/components/product-list';
 import Navigation from '~/components/navigation';
 
 export default function Perfil({ products }) {

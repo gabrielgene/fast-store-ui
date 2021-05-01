@@ -1,23 +1,13 @@
 import { gql } from '@apollo/client';
 
-export const GET_PRODUCTS = gql`
-  query Products {
-    notNewsProducts: products(where: { news: false }) {
+export const ALL_PRODUCTS = gql`
+  query AllProducts {
+    products {
       id
       name
       category
       news
-      image {
-        url
-      }
-      price
-    }
-
-    newsProducts: products(where: { news: true }) {
-      id
-      name
-      category
-      news
+      slug
       image {
         url
       }
@@ -26,17 +16,20 @@ export const GET_PRODUCTS = gql`
   }
 `;
 
-export const GET_PRODUCT_BY_ID = gql`
-  query ProductById($id: ID!) {
-    product(id: $id) {
-      id
-      name
-      category
-      news
-      image {
-        url
+export const GET_PRODUCT_BY_SLUG = gql`
+  query ProductBySlug($slug: String!) {
+    productsConnection(where: { slug: $slug }, limit: 1) {
+      values {
+        id
+        name
+        category
+        news
+        description
+        image {
+          url
+        }
+        price
       }
-      price
     }
   }
 `;

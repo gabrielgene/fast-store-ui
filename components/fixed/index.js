@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 export default function Fixed({ children }) {

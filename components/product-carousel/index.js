@@ -16,12 +16,16 @@ const ItemWrapper = styled.div`
   text-decoration: none;
 `;
 
+const ProductItemCarousel = styled(ProductItem)`
+  margin-left: 16px;
+`;
+
 export default function ProductCarousel({ products }) {
   return (
     <Wrapper>
       {products.map((p) => (
         <ItemWrapper key={p.id}>
-          <ProductItem {...p} />
+          <ProductItemCarousel {...p} />
         </ItemWrapper>
       ))}
     </Wrapper>

@@ -1,24 +1,29 @@
-import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import client from '~/apollo/client';
 import { ALL_PRODUCTS } from '~/apollo/queries';
+
 import Topbar from '~/components/topbar';
-import { Text34 } from '~/components/text';
 
+import Header from '~/components/header';
+import Filter from '~/components/filter';
 import ProductList from '~/components/product-list';
-
-const Wrapper = styled.div`
-  padding: 16px 24px;
-`;
+import Navigation from '~/components/navigation';
 
 export default function Products({ products }) {
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/produtos');
+  };
 
   return (
     <>
       <Topbar />
-      <Wrapper>
-        <Text34>Produtos</Text34>
-        <ProductList products={products} />
-      </Wrapper>
+      <div style={{ marginBottom: 58 }} />
+      <ProductList products={products} />
+      <div style={{ marginBottom: 84 }} />
+      <Navigation />
     </>
   );
 }

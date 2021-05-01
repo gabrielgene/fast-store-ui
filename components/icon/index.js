@@ -1,28 +1,22 @@
-const icons = {
-  back: {
-    src: '/icons/back',
-    alt: 'Back',
-  },
-  home: {
-    src: '/icons/home',
-    alt: 'Home',
-  },
-  bag: {
-    src: '/icons/bag',
-    alt: 'Bag',
-  },
-  profile: {
-    src: '/icons/profile',
-    alt: 'Profile',
-  },
-};
+import Image from 'next/image';
+import PropTypes from 'prop-types';
 
-export default function Icon({ icon, onClick, active }) {
-  const src = `${icons[icon].src}Outline.svg`;
-  const activeSrc = `${icons[icon].src}.svg`;
+function Icon({ name, onClick, width = 30, height = 30 }) {
   return (
-    <div onClick={onClick}>
-      <img {...icons[icon]} src={active ? activeSrc : src} />
-    </div>
+    <Image
+      onClick={onClick}
+      src={`/icons/${name}.svg`}
+      width={width}
+      height={height}
+    />
   );
 }
+
+Icon.propTypes = {
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  width: PropTypes.number,
+  height: PropTypes.number,
+};
+
+export default Icon;
