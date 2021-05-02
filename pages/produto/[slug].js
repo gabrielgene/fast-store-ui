@@ -5,7 +5,6 @@ import client from '~/apollo/client';
 import { GET_PRODUCT_BY_SLUG } from '~/apollo/queries';
 import Topbar from '~/components/topbar';
 import { Text34 } from '~/components/text';
-
 import ProductImage from '~/components/product-image';
 import ProductInfo from '~/components/product-info';
 import Button from '~/components/button';

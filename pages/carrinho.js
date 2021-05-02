@@ -1,13 +1,10 @@
-import { useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 import { useCart } from 'react-use-cart';
 import { floatToPrice } from '~/utils/price';
 import Button from '~/components/button';
 import Fixed from '~/components/fixed';
-
-import { CREATE_USER_PAYMENT, CREATE_ORDER } from '~/apollo/mutations';
-
 import Topbar from '~/components/topbar';
 import { Text34, Text14, Text18 } from '~/components/text';
 import CartList from '~/components/cart-list';
@@ -23,37 +20,9 @@ const Price = styled.div`
 `;
 
 export default function Cart() {
+  const router = useRouter();
   const cart = useCart();
   const { items, cartTotal } = cart;
-  const [createUserPayment, { data }] = useMutation(CREATE_USER_PAYMENT);
-  const [createOrder, order] = useMutation(CREATE_ORDER);
-
-  React.useEffect(() => {
-    if (data) {
-      const { register, createPayment } = data;
-      createOrder({
-        variables: {
-          user: register.user.id,
-          products: items.map((i) => i.id),
-          payment: createPayment.payment.id,
-          value: cartTotal,
-          status: 'PENDING',
-        },
-      });
-    }
-  }, [data]);
-
-  const handleSubmit = () => {
-    createUserPayment({
-      variables: {
-        username: 'client13',
-        email: 'client13@gmail.com',
-        password: '1234',
-        externalReference: '1234',
-        status: 'PENDING',
-      },
-    });
-  };
 
   return (
     <>
@@ -69,7 +38,10 @@ export default function Cart() {
       <div style={{ backgroundColor: '#F9F9F9' }}>
         <div style={{ marginBottom: 122 }} />
         <Fixed>
-          <Button text="Finalizar compra" onClick={handleSubmit} />
+          <Button
+            text="Finalizar compra"
+            onClick={() => router.push('/finalizar')}
+          />
         </Fixed>
       </div>
     </>
