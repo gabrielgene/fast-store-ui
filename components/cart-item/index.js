@@ -2,7 +2,7 @@ import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import { floatToPrice } from '~/utils/price';
 import ProductImage from '~/components/product-image';
-import { Text16, Text14 } from '~/components/text';
+import { Text16, Text11, Text14 } from '~/components/text';
 import CartButtom from '~/components/cart-buttom';
 
 const Wrapper = styled.div`
@@ -34,7 +34,14 @@ const Counter = styled.div`
   align-items: center;
 `;
 
-export default function CartItem({ name, itemTotal, quantity, image, id }) {
+export default function CartItem({
+  name,
+  itemTotal,
+  quantity,
+  image,
+  id,
+  size,
+}) {
   const { updateItemQuantity } = useCart();
   return (
     <Wrapper>
@@ -47,7 +54,11 @@ export default function CartItem({ name, itemTotal, quantity, image, id }) {
         />
       </div>
       <Info>
-        <Text16 style={{ marginBottom: 12 }}>{name}</Text16>
+        <Text16 style={{ fontWeight: 500 }}>{name}</Text16>
+        <div style={{ display: 'flex'  }}>
+          <Text11 style={{ marginRight: 4}}>Tamanho:</Text11>
+          <Text11 style={{ color: '#333333'}}>{size}</Text11>
+        </div>
         <InfoFooter>
           <Counter>
             <CartButtom

@@ -21,13 +21,13 @@ const StyledImage = styled(ProductImage)`
 `;
 
 export default function Product({ product }) {
-  const { name, image, id, price } = product;
+  const { name, image } = product;
   const { addItem } = useCart();
   const router = useRouter();
 
   const handleAdd = () => {
-    addItem({ id, price, name, image });
-    router.push('/sacola');
+    addItem(product);
+    router.push('/carrinho');
   };
 
   return (

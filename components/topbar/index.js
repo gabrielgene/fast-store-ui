@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import Drawer from '@material-ui/core/Drawer';
 import MUIListItem from '@material-ui/core/ListItem';
@@ -35,6 +36,9 @@ const ListItem = styled(MUIListItem)`
 
 export default function Topbar() {
   const [open, setOpen] = React.useState(false);
+  const [amout, setAmout] = React.useState('');
+  const cart = useCart();
+  const { totalItems } = cart;
   const router = useRouter();
 
   const handleNavigate = (route) => {
@@ -42,13 +46,17 @@ export default function Topbar() {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    setAmout(totalItems);
+  }, [totalItems]);
+
   return (
     <>
       <Wrapper>
         <Icon name="menu" onClick={() => setOpen(true)} />
         <Text18 onClick={() => router.push('/')}>Beandare</Text18>
-        <Badge badgeContent={4} color="primary">
-          <Icon name="bag" onClick={() => router.push('/sacola')} />
+        <Badge badgeContent={amout} color="primary">
+          <Icon name="bag" onClick={() => router.push('/carrinho')} />
         </Badge>
         <Drawer
           style={{ zIndex: 1000 }}
@@ -59,7 +67,7 @@ export default function Topbar() {
             <ListItem button onClick={() => handleNavigate('/')}>
               <Text18>Produtos</Text18>
             </ListItem>
-            <ListItem button onClick={() => handleNavigate('/Carrinho')}>
+            <ListItem button onClick={() => handleNavigate('/carrinho')}>
               <Text18>Carrinho</Text18>
             </ListItem>
             <ListItem button onClick={() => handleNavigate('/meus-pedidos')}>

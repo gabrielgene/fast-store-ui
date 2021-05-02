@@ -9,14 +9,13 @@ const ItemWrapper = styled.div`
 `;
 
 export default function CartList({ items }) {
-  console.log(items[0]);
   return (
-    <>
+    <div>
       {items.map((i) => (
         <ItemWrapper key={i.id}>
           <CartItem {...i} />
         </ItemWrapper>
       ))}
-    </>
+    </div>
   );
 }

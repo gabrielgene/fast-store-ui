@@ -3,16 +3,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { useCart } from 'react-use-cart';
 import { floatToPrice } from '~/utils/price';
+import Button from '~/components/button';
+import Fixed from '~/components/fixed';
 
 import { CREATE_USER_PAYMENT, CREATE_ORDER } from '~/apollo/mutations';
 
+import Topbar from '~/components/topbar';
 import { Text34, Text14, Text18 } from '~/components/text';
-import Navigation from '~/components/navigation';
-import Button from '~/components/button';
 import CartList from '~/components/cart-list';
 
-const Page = styled.div`
-  padding: 0 16px;
+const Wrapper = styled.div`
+  padding: 16px 24px;
 `;
 
 const Price = styled.div`
@@ -56,17 +57,21 @@ export default function Cart() {
 
   return (
     <>
-      <Page>
-        <Text34 style={{ marginTop: 18, marginBottom: 18 }}>Carrinho</Text34>
+      <Topbar />
+      <Wrapper>
+        <Text34 style={{ marginBottom: 24 }}>Carrinho</Text34>
         <div>{items.length !== 0 && <CartList items={items} />}</div>
         <Price>
           <Text14 style={{ color: '#9B9B9B' }}>Valor total:</Text14>
           <Text18>{floatToPrice(cartTotal)}</Text18>
         </Price>
-        <Button text="Comprar" onClick={handleSubmit} />
-        <div style={{ marginBottom: 84 }} />
-      </Page>
-      <Navigation />
+      </Wrapper>
+      <div style={{ backgroundColor: '#F9F9F9' }}>
+        <div style={{ marginBottom: 122 }} />
+        <Fixed>
+          <Button text="Finalizar compra" onClick={handleSubmit} />
+        </Fixed>
+      </div>
     </>
   );
 }

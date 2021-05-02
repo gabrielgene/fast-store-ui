@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 export default function CartButtom({ icon, className, onClick }) {
   return (
     <Wrapper className={className} onClick={onClick}>
-      <Icon icon={icon} active />
+      <Icon name={icon} active />
     </Wrapper>
   );
 }
