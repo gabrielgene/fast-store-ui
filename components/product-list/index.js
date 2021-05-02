@@ -6,8 +6,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* display: grid;
-  grid-template-columns: 50% 50%; */
 `;
 
 export default function ProductList({ products }) {

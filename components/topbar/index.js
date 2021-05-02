@@ -46,7 +46,7 @@ export default function Topbar() {
     <>
       <Wrapper>
         <Icon name="menu" onClick={() => setOpen(true)} />
-        <Text18>Beandare</Text18>
+        <Text18 onClick={() => router.push('/')}>Beandare</Text18>
         <Badge badgeContent={4} color="primary">
           <Icon name="bag" onClick={() => router.push('/sacola')} />
         </Badge>

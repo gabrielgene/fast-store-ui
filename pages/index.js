@@ -3,7 +3,6 @@ import client from '~/apollo/client';
 import { ALL_PRODUCTS } from '~/apollo/queries';
 import Topbar from '~/components/topbar';
 import { Text34 } from '~/components/text';
-
 import ProductList from '~/components/product-list';
 
 const Wrapper = styled.div`

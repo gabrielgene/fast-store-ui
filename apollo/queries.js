@@ -25,6 +25,7 @@ export const GET_PRODUCT_BY_SLUG = gql`
         category
         news
         description
+        size
         image {
           url
         }
