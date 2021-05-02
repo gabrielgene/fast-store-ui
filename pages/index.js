@@ -6,7 +6,7 @@ import { Text34 } from '~/components/text';
 import ProductList from '~/components/product-list';
 
 const Wrapper = styled.div`
-  padding: 16px 24px;
+  padding: 16px;
 `;
 
 export default function Products({ products }) {

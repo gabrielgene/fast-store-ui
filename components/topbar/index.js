@@ -54,7 +54,12 @@ export default function Topbar() {
     <>
       <Wrapper>
         <Icon name="menu" onClick={() => setOpen(true)} />
-        <Text18 onClick={() => router.push('/')}>Beandare</Text18>
+        <Text18
+          style={{ fontFamily: 'Limelight' }}
+          onClick={() => router.push('/')}
+        >
+          BEANDARE
+        </Text18>
         <Badge badgeContent={amout} color="primary">
           <Icon name="bag" onClick={() => router.push('/carrinho')} />
         </Badge>

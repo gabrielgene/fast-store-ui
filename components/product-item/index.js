@@ -28,7 +28,7 @@ export default function ProductItem({ image, name, price, slug, news, style }) {
   return (
     <Wrapper style={style}>
       <If condition={!!news}>
-        <ProductBadge text="NEWS" />
+        <ProductBadge text="NEW" />
       </If>
       <StyledImage
         onClick={() => router.push(`produto/${slug}`)}
@@ -36,7 +36,7 @@ export default function ProductItem({ image, name, price, slug, news, style }) {
         width={160}
         height={200}
       />
-      <Text16 style={{ marginTop: 8, width: 148 }}>{name}</Text16>
+      <Text16 style={{ marginTop: 4, width: 148 }}>{name}</Text16>
       <Text14 style={{ marginTop: 4, width: 148 }}>
         {floatToPrice(price)}
       </Text14>

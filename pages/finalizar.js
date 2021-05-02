@@ -1,6 +1,11 @@
 import { useMutation } from '@apollo/client';
 import React from 'react';
 import styled from 'styled-components';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useCart } from 'react-use-cart';
 import { floatToPrice } from '~/utils/price';
 import Button from '~/components/button';
@@ -59,34 +64,47 @@ export default function Cart() {
       <Topbar />
       <Wrapper>
         <Text34 style={{ marginBottom: 24 }}>Finalizar compra</Text34>
-        <TextField
-          style={{ marginBottom: 24 }}
-          id="outlined-basic"
-          fullWidth
-          label="Nome"
-          variant="outlined"
-        />
-        <TextField
-          style={{ marginBottom: 24 }}
-          id="outlined-basic"
-          fullWidth
-          label="E-mail"
-          variant="outlined"
-        />
-        <TextField
-          style={{ marginBottom: 24 }}
-          id="outlined-basic"
-          fullWidth
-          label="Senha"
-          variant="outlined"
-        />
-        <TextField
-          style={{ marginBottom: 24 }}
-          id="outlined-basic"
-          fullWidth
-          label="Telefone"
-          variant="outlined"
-        />
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Accordion 1</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div>
+              <TextField
+                style={{ marginBottom: 24 }}
+                id="outlined-basic"
+                fullWidth
+                label="Nome"
+                variant="outlined"
+              />
+              <TextField
+                style={{ marginBottom: 24 }}
+                id="outlined-basic"
+                fullWidth
+                label="E-mail"
+                variant="outlined"
+              />
+              <TextField
+                style={{ marginBottom: 24 }}
+                id="outlined-basic"
+                fullWidth
+                label="Senha"
+                variant="outlined"
+              />
+              <TextField
+                style={{ marginBottom: 24 }}
+                id="outlined-basic"
+                fullWidth
+                label="Telefone"
+                variant="outlined"
+              />
+            </div>
+          </AccordionDetails>
+        </Accordion>
         <Price>
           <Text14 style={{ color: '#9B9B9B' }}>Valor total:</Text14>
           <Text18>{floatToPrice(cartTotal)}</Text18>

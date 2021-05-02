@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Text34 = styled.div`
   font-size: 34px;
   line-height: 40px;
-  font-weight: 700;
+  font-weight: medium;
   color: #222222;
 `;
 
@@ -17,21 +17,21 @@ export const Text24 = styled.div`
 export const Text18 = styled.div`
   font-size: 18px;
   line-height: 22px;
-  font-weight: 900;
+  font-weight: medium;
   color: #222222;
 `;
 
 export const Text16 = styled.div`
   font-size: 16px;
   line-height: 19px;
-  font-weight: 900;
+  font-weight: normal;
   color: #222222;
 `;
 
 export const Text14 = styled.div`
   font-size: 14px;
   line-height: 20px;
-  font-weight: 500;
+  font-weight: bold;
   color: #222222;
 `;
 
