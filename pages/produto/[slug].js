@@ -20,7 +20,7 @@ const StyledImage = styled(ProductImage)`
 `;
 
 export default function Product({ product }) {
-  const { name, image } = product;
+  const { image } = product;
   const { addItem } = useCart();
   const router = useRouter();
 
@@ -33,7 +33,6 @@ export default function Product({ product }) {
     <>
       <Topbar />
       <Wrapper>
-        <Text34 style={{ marginBottom: 24 }}>{name}</Text34>
         <StyledImage
           src={image[0].url}
           width={500}

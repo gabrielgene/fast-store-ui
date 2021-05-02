@@ -38,8 +38,8 @@ export const Text14 = styled.div`
 export const Text11 = styled.div`
   font-size: 11px;
   line-height: 13px;
-  font-weight: 400;
-  color: #9b9b9b;
+  font-weight: normal;
+  color: #222222;
 `;
 
 export const Text10 = styled.div`

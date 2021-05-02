@@ -3,11 +3,12 @@ import MUIButton from '@material-ui/core/Button';
 
 const StyledButton = styled(MUIButton)`
   border-radius: 25px;
-  background-color: #db3022;
-  color: #ffffff;
+  background-color: #a5e4d9;
+  color: #333333;
   height: 48px;
+  font-family: 'Montserrat';
   &:hover {
-    background-color: #db3022;
+    background-color: #a5e4d9;
   }
 `;
 

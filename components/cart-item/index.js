@@ -55,9 +55,9 @@ export default function CartItem({
       </div>
       <Info>
         <Text16 style={{ fontWeight: 500 }}>{name}</Text16>
-        <div style={{ display: 'flex'  }}>
-          <Text11 style={{ marginRight: 4}}>Tamanho:</Text11>
-          <Text11 style={{ color: '#333333'}}>{size}</Text11>
+        <div style={{ display: 'flex' }}>
+          <Text11 style={{ marginRight: 4 }}>Tamanho:</Text11>
+          <Text11 style={{ color: '#333333' }}>{size}</Text11>
         </div>
         <InfoFooter>
           <Counter>
@@ -65,7 +65,9 @@ export default function CartItem({
               icon="remove"
               onClick={() => updateItemQuantity(id, quantity - 1)}
             />
-            <Text14 style={{ marginRight: 16, marginLeft: 16 }}>
+            <Text14
+              style={{ marginRight: 8, marginLeft: 8, fontWeight: 'normal' }}
+            >
               {quantity}
             </Text14>
             <CartButtom

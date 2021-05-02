@@ -6,7 +6,7 @@ import { floatToPrice } from '~/utils/price';
 import Button from '~/components/button';
 import Fixed from '~/components/fixed';
 import Topbar from '~/components/topbar';
-import { Text34, Text14, Text18 } from '~/components/text';
+import { Text34, Text18 } from '~/components/text';
 import CartList from '~/components/cart-list';
 
 const Wrapper = styled.div`
@@ -31,17 +31,16 @@ export default function Cart() {
         <Text34 style={{ marginBottom: 24 }}>Carrinho</Text34>
         <div>{items.length !== 0 && <CartList items={items} />}</div>
         <Price>
-          <Text14 style={{ color: '#9B9B9B' }}>Valor total:</Text14>
-          <Text18>{floatToPrice(cartTotal)}</Text18>
+          <Text18 style={{ color: '#9B9B9B' }}>Valor total:</Text18>
+          <Text18 style={{ fontWeight: 'bold' }}>
+            {floatToPrice(cartTotal)}
+          </Text18>
         </Price>
       </Wrapper>
       <div style={{ backgroundColor: '#F9F9F9' }}>
         <div style={{ marginBottom: 122 }} />
         <Fixed>
-          <Button
-            text="Finalizar compra"
-            onClick={() => router.push('/finalizar')}
-          />
+          <Button text="Continuar" onClick={() => router.push('/entrega')} />
         </Fixed>
       </div>
     </>

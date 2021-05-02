@@ -24,7 +24,8 @@ const Wrapper = styled.div`
 
 const Badge = styled(MUIBadge)`
   .MuiBadge-badge {
-    background-color: #db3022;
+    background-color: #a5e4d9;
+    color: #333333;
   }
 `;
 
