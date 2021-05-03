@@ -22,7 +22,15 @@ const ProductBadge = styled(Badge)`
   left: 8px;
 `;
 
-export default function ProductItem({ image, name, price, slug, news, style }) {
+export default function ProductItem({
+  image,
+  name,
+  price,
+  slug,
+  news,
+  style,
+  imageUrl,
+}) {
   const router = useRouter();
 
   return (
@@ -32,7 +40,8 @@ export default function ProductItem({ image, name, price, slug, news, style }) {
       </If>
       <StyledImage
         onClick={() => router.push(`produto/${slug}`)}
-        src={image[0].url}
+        // src={image[0].url}
+        src={imageUrl}
         width={160}
         height={200}
       />

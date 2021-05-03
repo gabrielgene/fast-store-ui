@@ -8,6 +8,7 @@ export const ALL_PRODUCTS = gql`
       category
       news
       slug
+      imageUrl
       image {
         url
       }
@@ -26,6 +27,7 @@ export const GET_PRODUCT_BY_SLUG = gql`
         news
         description
         size
+        imageUrl
         image {
           url
         }

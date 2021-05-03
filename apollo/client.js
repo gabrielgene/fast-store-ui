@@ -1,9 +1,10 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
-export const SERVER_URI = 'http://localhost:1337';
-// export const SERVER_URI = 'http://165.227.67.133:1337';
+const HOST2 = 'http://localhost';
+const HOST = 'http://165.227.67.133';
 
-export const EXTERNAL_URI = 'http://165.227.67.133:1337';
+export const SERVER_URI = `${HOST}:1337`;
+export const LOCAL_URI = `${HOST}:3000`;
 
 const client = new ApolloClient({
   ssrMode: true,

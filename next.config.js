@@ -1,5 +1,7 @@
 module.exports = {
   images: {
-    domains: ['localhost', '165.227.67.133'],
+    loader: 'imgix',
+    domains: ['ik.imagekit.io', 'localhost'],
+    path: 'https://ik.imagekit.io/9bgpx0om9/',
   },
 };

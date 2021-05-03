@@ -41,13 +41,14 @@ export default function CartItem({
   image,
   id,
   size,
+  imageUrl,
 }) {
   const { updateItemQuantity } = useCart();
   return (
     <Wrapper>
       <div style={{ width: 104 }}>
         <StyledProductImage
-          src={image[0].url}
+          src={imageUrl}
           width={104}
           height={104}
           objectFit="cover"

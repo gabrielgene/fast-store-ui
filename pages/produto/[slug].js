@@ -20,7 +20,7 @@ const StyledImage = styled(ProductImage)`
 `;
 
 export default function Product({ product }) {
-  const { image } = product;
+  const { imageUrl } = product;
   const { addItem } = useCart();
   const router = useRouter();
 
@@ -34,7 +34,7 @@ export default function Product({ product }) {
       <Topbar />
       <Wrapper>
         <StyledImage
-          src={image[0].url}
+          src={imageUrl}
           width={500}
           height={500}
           objectFit="cover"
