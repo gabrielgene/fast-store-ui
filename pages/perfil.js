@@ -13,27 +13,3 @@ export default function Perfil({ products }) {
     </div>
   );
 }
-
-export async function getStaticProps(context) {
-  const { data } = await client.query({
-    query: gql`
-      query Products {
-        products {
-          id
-          name
-          image {
-            url
-          }
-          price
-        }
-      }
-    `,
-  });
-
-  return {
-    props: {
-      products: data.products,
-    },
-    revalidate: 10,
-  };
-}
