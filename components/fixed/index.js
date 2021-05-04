@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   bottom: 0;
   width: 100%;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 `;
 
 export default function Fixed({ children }) {

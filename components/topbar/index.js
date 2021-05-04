@@ -8,6 +8,7 @@ import MUIList from '@material-ui/core/List';
 import MUIBadge from '@material-ui/core/Badge';
 
 import Icon from '~/components/icon';
+import If from '~/components/if';
 import { Text18 } from '~/components/text';
 
 const Wrapper = styled.div`
@@ -38,6 +39,7 @@ const ListItem = styled(MUIListItem)`
 export default function Topbar() {
   const [open, setOpen] = React.useState(false);
   const [amout, setAmout] = React.useState('');
+  const [logged, setLogged] = React.useState(false);
   const cart = useCart();
   const { totalItems } = cart;
   const router = useRouter();
@@ -49,6 +51,10 @@ export default function Topbar() {
 
   React.useEffect(() => {
     setAmout(totalItems);
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      setLogged(true);
+    }
   }, [totalItems]);
 
   return (
@@ -76,12 +82,16 @@ export default function Topbar() {
             <ListItem button onClick={() => handleNavigate('/carrinho')}>
               <Text18>Carrinho</Text18>
             </ListItem>
-            <ListItem button onClick={() => handleNavigate('/meus-pedidos')}>
-              <Text18>Meus Pedidos</Text18>
-            </ListItem>
-            <ListItem button onClick={() => handleNavigate('/')}>
-              <Text18>Entrar</Text18>
-            </ListItem>
+            <If condition={logged}>
+              <ListItem button onClick={() => handleNavigate('/meus-pedidos')}>
+                <Text18>Meus Pedidos</Text18>
+              </ListItem>
+            </If>
+            <If condition={!logged}>
+              <ListItem button onClick={() => handleNavigate('/entrar')}>
+                <Text18>Entrar</Text18>
+              </ListItem>
+            </If>
           </MUIList>
         </Drawer>
       </Wrapper>

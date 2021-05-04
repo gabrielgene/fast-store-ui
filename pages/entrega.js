@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router';
+import { useCart } from 'react-use-cart';
 import React from 'react';
 import styled from 'styled-components';
-import { useCart } from 'react-use-cart';
 import Button from '~/components/button';
 import Fixed from '~/components/fixed';
 import Topbar from '~/components/topbar';
-import Input from '~/components/input';
-import { Text34 } from '~/components/text';
+import { Text34, Text11 } from '~/components/text';
+import UserForm from '~/components/delivery-form/user';
+import CepForm from '~/components/delivery-form/cep';
+import createOrder from '~/services/createOrder';
 
 const Wrapper = styled.div`
   padding: 16px 24px;
@@ -14,21 +16,78 @@ const Wrapper = styled.div`
 
 export default function Delivery() {
   const router = useRouter();
+  const cart = useCart();
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState('');
+  const [userInfo, setUserInfo] = React.useState({});
+  const [deliveryInfo, setDeliveryInfo] = React.useState({});
+
+  const disabled =
+    !userInfo.name ||
+    !userInfo.phone ||
+    !userInfo.email ||
+    !userInfo.password ||
+    !deliveryInfo.cep ||
+    !deliveryInfo.street ||
+    !deliveryInfo.neighborhood ||
+    !deliveryInfo.state ||
+    !deliveryInfo.city ||
+    !deliveryInfo.complement ||
+    !deliveryInfo.number;
+
+  const handleUserInfoChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
+  const handleDeliveryInfoChange = (e) => {
+    const { name, value } = e.target;
+    setDeliveryInfo({ ...deliveryInfo, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    setLoading(true);
+    setError('');
+    const cartInfo = {
+      total: cart.cartTotal,
+      orderItems: cart.items,
+    };
+
+    createOrder({ userInfo, deliveryInfo, cartInfo })
+      .then((r) => {
+        localStorage.setItem('orderId', r);
+        router.push('pagamento');
+        setLoading(false);
+        setError('');
+      })
+      .catch(() => {
+        setError('Email já está em uso');
+        setLoading(false);
+      });
+  };
 
   return (
     <>
       <Topbar />
       <Wrapper>
         <Text34 style={{ marginBottom: 24 }}>Entrega</Text34>
-        <Input name="Name" />
-        <Input name="E-mail" />
-        <Input name="Password" type="password" />
-        <Input name="CEP" />
+        <UserForm handleChange={handleUserInfoChange} userInfo={userInfo} />
+        <CepForm
+          handleChange={handleDeliveryInfoChange}
+          deliveryInfo={deliveryInfo}
+          setDeliveryInfo={setDeliveryInfo}
+        />
       </Wrapper>
       <div style={{ backgroundColor: '#F9F9F9' }}>
         <div style={{ marginBottom: 122 }} />
         <Fixed>
-          <Button text="Continuar" onClick={() => router.push('/pagamento')} />
+          {error && <Text11 style={{ marginBottom: 8, color: 'red'  }}>{error}</Text11>}
+          <Button
+            loading={loading}
+            disabled={disabled}
+            onClick={loading ? () => {} : handleSubmit}
+            text="Continuar"
+          />
         </Fixed>
       </div>
     </>

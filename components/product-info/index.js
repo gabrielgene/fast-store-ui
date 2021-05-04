@@ -10,7 +10,6 @@ const MainInfo = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
-  align-items: center;
 `;
 
 const Divider = styled.div`
@@ -26,7 +25,7 @@ export default function ProductInfo({
   return (
     <Wrapper>
       <MainInfo>
-        <Text18 style={{ fontWeight: 'normal' }}>{name}</Text18>
+        <Text18 style={{ fontWeight: 'normal', width: 200 }}>{name}</Text18>
         <Text24>{floatToPrice(price)}</Text24>
       </MainInfo>
       <Text14 style={{ fontWeight: 'normal' }}>Tamanho: {size}</Text14>

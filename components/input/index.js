@@ -11,15 +11,16 @@ const TextField = styled(MUITextField)`
   margin-bottom: 24px;
 `;
 
-export default function Input({ name, type }) {
+export default function Input({ label, type, ...rest }) {
   return (
     <TextField
       fullWidth
-      id={`id-${name}`}
-      label={name}
+      id={`id-${label}`}
       type={type}
       variant="filled"
       InputProps={{ style: { backgroundColor: 'rgba(0, 0, 0, 0.06)' } }}
+      {...rest}
+      label={label}
     />
   );
 }

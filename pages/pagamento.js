@@ -38,7 +38,13 @@ const Divider = styled.div`
 export default function Payment() {
   const router = useRouter();
   const cart = useCart();
-  const { cartTotal } = cart;
+  const { cartTotal, emptyCart } = cart;
+  const [orderId, setOrderId] = React.useState('');
+
+  React.useEffect(() => {
+    const data = localStorage.getItem('orderId');
+    setOrderId(data);
+  }, []);
 
   return (
     <>
@@ -62,27 +68,48 @@ export default function Payment() {
             </StyledText14>
           </Inline>
         </Card>
+        <StyledText14>Pedido: #{orderId}</StyledText14>
         <Card>
           <StyledText14>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,
-            discovered the undoubtable source. Lorem Ipsum comes from sections
-            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-            of Good and Evil) by Cicero, written in 45 BC. This book is a
-            treatise on the theory of ethics, very popular during the
-            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-            amet..", comes from a line in section 1.10.32.
+            Olá! Obrigada por adquirir a sua peça Beandare!
+          </StyledText14>
+          <StyledText14>
+            Segue abaixo nossas contas para pagamento:
+          </StyledText14>
+          <br />
+          <StyledText14>NUBANK</StyledText14>
+          <StyledText14>Agência:</StyledText14>
+          <StyledText14>Conta corrente:</StyledText14>
+          <StyledText14>
+            Titular: Juliana Jennifer Gomes de Oliveira
+          </StyledText14>
+          <StyledText14>CPF: 857.851.075-54</StyledText14>
+          <br />
+          <StyledText14>PIX NUBANK: 85785107554</StyledText14>
+          <br />
+          <StyledText14>
+            O próximo passo é enviar o seu nome completo, número do pedido e
+            comprovante do pagamento para o nosso Whatsapp, clicando no botão
+            abaixo ♡
           </StyledText14>
         </Card>
       </Wrapper>
       <div style={{ backgroundColor: '#F9F9F9' }}>
         <div style={{ marginBottom: 122 }} />
         <Fixed>
-          <Button text="Finalizar" onClick={() => router.push('/parabens')} />
+          <a
+            target="_blank"
+            href={`https://wa.me/5571992229059?text=Ol%C3%A1%2C+segue+comprovante+do+pedido+%23xxx&rlz=1C5CHFA_enBR879BR879&oq=Ol%C3%A1%2C+segue+comprovante+do+pedido#${orderId}`}
+          >
+            <Button
+              text="Enviar comprovante"
+              onClick={() => {
+                localStorage.setItem('orderId', '');
+                emptyCart();
+                router.push('/');
+              }}
+            />
+          </a>
         </Fixed>
       </div>
     </>
