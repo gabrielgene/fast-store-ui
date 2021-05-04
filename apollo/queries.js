@@ -36,3 +36,16 @@ export const GET_PRODUCT_BY_SLUG = gql`
     }
   }
 `;
+
+export const GET_ORDERS = gql`
+  query Orders {
+    self {
+      orders {
+        id
+        created_at
+        status
+        value
+      }
+    }
+  }
+`;
