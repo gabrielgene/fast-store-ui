@@ -35,7 +35,7 @@ const Button = styled(MUIButton)`
 
 export default function OrderCard({ order }) {
   const router = useRouter();
-  const { id, value, created_at, status } = order;
+  const { id, value, created_at, status, order_items } = order;
   return (
     <Wrapper>
       <Line style={{ marginBottom: 8 }}>
@@ -52,7 +52,9 @@ export default function OrderCard({ order }) {
         </ClientOnly>
       </Line>
       <Line style={{ marginBottom: 8 }}>
-        <Text14 style={{ fontWeight: 'normal' }}>Quantidade: 3</Text14>
+        <Text14 style={{ fontWeight: 'normal' }}>
+          Quantidade: {order_items.length}
+        </Text14>
         <Text18>{floatToPrice(value)}</Text18>
       </Line>
       <Line style={{ alignItems: 'center' }}>

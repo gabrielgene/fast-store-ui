@@ -1,7 +1,9 @@
 import cookie from 'cookie';
+import { floatToPrice } from '~/utils/price';
 import { FormattedDate } from 'react-intl';
 import styled from 'styled-components';
 import ClientOnly from '~/components/client-only';
+import OrderItem from '~/components/order-item';
 import { Text14 } from '~/components/text';
 import client from '~/apollo/client';
 import { GET_ORDER_BY_ID } from '~/apollo/queries';
@@ -17,11 +19,11 @@ const Wrapper = styled.div`
 `;
 
 export default function Order({ order }) {
-  const { id, created_at } = order;
+  const { id, created_at, order_items, status, value } = order;
 
   return (
     <>
-      <Topbar />
+      <Topbar back={true} />
       <Wrapper>
         <Line style={{ marginBottom: 8 }}>
           <Text14>Pedido: #{id}</Text14>
@@ -36,8 +38,28 @@ export default function Order({ order }) {
             </Text14>
           </ClientOnly>
         </Line>
+        <Line style={{ marginBottom: 8 }}>
+          <Text14 style={{ textTransform: 'capitalize', fontWeight: 'normal' }}>
+            {status.toLowerCase()}
+          </Text14>
+        </Line>
+        <div style={{ marginTop: 24 }}>
+          {order_items.map((o) => (
+            <OrderItem
+              key={o.id}
+              {...o.product}
+              amount={o.amount}
+              value={o.value}
+            />
+          ))}
+        </div>
+        <div style={{ display: 'flex' }}>
+          <Text14 style={{ fontWeight: 'normal', marginRight: 8 }}>
+            Total:
+          </Text14>
+          <Text14>{floatToPrice(value)}</Text14>
+        </div>
       </Wrapper>
-      <Topbar />
     </>
   );
 }

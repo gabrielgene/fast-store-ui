@@ -5,6 +5,8 @@ import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import Drawer from '@material-ui/core/Drawer';
 import MUIListItem from '@material-ui/core/ListItem';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import MUIList from '@material-ui/core/List';
 import MUIBadge from '@material-ui/core/Badge';
 
@@ -37,7 +39,7 @@ const ListItem = styled(MUIListItem)`
   border-bottom: 1px solid #c4c4c4;
 `;
 
-export default function Topbar() {
+export default function Topbar({ back, test }) {
   const [open, setOpen] = React.useState(false);
   const [amout, setAmout] = React.useState('');
   const [logged, setLogged] = React.useState(false);
@@ -58,10 +60,22 @@ export default function Topbar() {
     }
   }, [totalItems]);
 
+  console.log(back, test);;
+
   return (
     <>
       <Wrapper>
-        <Icon name="menu" onClick={() => setOpen(true)} />
+        {back ? (
+          <IconButton
+            style={{ padding: 3 }}
+            onClick={() => router.back()}
+            aria-label="back"
+          >
+            <ArrowBackIosIcon />
+          </IconButton>
+        ) : (
+          <Icon name="menu" onClick={() => setOpen(true)} />
+        )}
         <Text18
           style={{ fontFamily: 'Limelight' }}
           onClick={() => router.push('/')}

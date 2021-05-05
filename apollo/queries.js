@@ -63,6 +63,13 @@ export const GET_ORDER_BY_ID = gql`
         value
         order_items {
           id
+          value
+          amount
+          product {
+            imageUrl
+            name
+            size
+          }
         }
       }
     }
