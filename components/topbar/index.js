@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import Drawer from '@material-ui/core/Drawer';
@@ -51,7 +52,7 @@ export default function Topbar() {
 
   React.useEffect(() => {
     setAmout(totalItems);
-    const jwt = localStorage.getItem('jwt');
+    const jwt = Cookies.get('jwt');
     if (jwt) {
       setLogged(true);
     }

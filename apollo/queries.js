@@ -45,6 +45,25 @@ export const GET_ORDERS = gql`
         created_at
         status
         value
+        order_items {
+          id
+        }
+      }
+    }
+  }
+`;
+
+export const GET_ORDER_BY_ID = gql`
+  query OrderById($id: String!) {
+    self {
+      orders(where: { id: $id }) {
+        id
+        created_at
+        status
+        value
+        order_items {
+          id
+        }
       }
     }
   }

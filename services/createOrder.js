@@ -1,4 +1,5 @@
 import strapiInstance from './instance';
+import Cookies from 'js-cookie';
 
 export default async function createOrder({
   userInfo,
@@ -14,7 +15,7 @@ export default async function createOrder({
     name: userInfo.name,
   });
 
-  localStorage.setItem('jwt', jwt);
+  Cookies.set('jwt', jwt);
 
   const { data: address } = await strapiInstance.post(
     '/addresses',

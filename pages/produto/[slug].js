@@ -57,6 +57,5 @@ export async function getServerSideProps({ params }) {
     query: GET_PRODUCT_BY_SLUG,
     variables: { slug: params.slug },
   });
-  console.log(data.productsConnection.values[0]);
   return { props: { product: data.productsConnection.values[0] } };
 }

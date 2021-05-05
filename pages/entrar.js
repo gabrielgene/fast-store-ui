@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 `;
 
 export default function Login() {
+  const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const [values, setValues] = React.useState({ email: '', password: '' });
   const [error, setError] = React.useState('');
@@ -25,9 +26,19 @@ export default function Login() {
   };
 
   const handleSubmit = async () => {
+    setError('');
+    setLoading(true);
     login(values)
-      .then(() => setError(''))
-      .catch(() => setError('Usuario ou senha incorretos'));
+      .then(() => {
+        router.push('/meus-pedidos');
+        setError('');
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+        setError('Usuario ou senha incorretos');
+      });
   };
 
   return (
@@ -55,7 +66,12 @@ export default function Login() {
       <div style={{ backgroundColor: '#F9F9F9' }}>
         <div style={{ marginBottom: 122 }} />
         <Fixed>
-          <Button disabled={disabled} text="Entrar" onClick={handleSubmit} />
+          <Button
+            loading={loading}
+            disabled={disabled}
+            onClick={loading ? () => {} : handleSubmit}
+            text="Entrar"
+          />
         </Fixed>
       </div>
     </>
