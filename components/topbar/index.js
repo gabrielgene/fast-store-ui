@@ -60,7 +60,6 @@ export default function Topbar({ back, test }) {
     }
   }, [totalItems]);
 
-  console.log(back, test);;
 
   return (
     <>

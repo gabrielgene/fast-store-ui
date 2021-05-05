@@ -1,27 +1,15 @@
 import strapiInstance from './instance';
 import Cookies from 'js-cookie';
 
-export default async function createOrder({
-  userInfo,
-  deliveryInfo,
-  cartInfo,
-  logged,
-}) {
-  const {
-    data: { jwt, user },
-  } = await strapiInstance.post('/auth/local/register', {
-    username: userInfo.email,
-    email: userInfo.email,
-    password: userInfo.password,
-    name: userInfo.name,
+export default async function createOrder({ cartInfo }) {
+  const jwt = Cookies.get('jwt');
+
+  const { data: user } = await strapiInstance.get('/users/me', {
+    headers: {
+      authorization: `Bearer ${jwt}`,
+    },
   });
 
-  Cookies.set('jwt', jwt);
-
-  const { data: address } = await strapiInstance.post(
-    '/addresses',
-    deliveryInfo
-  );
 
   const { data: payment } = await strapiInstance.post('/payments', {
     status: 'PENDENTE',
@@ -46,12 +34,6 @@ export default async function createOrder({
   });
 
   await Promise.all(orderItemPromises);
-
-  await strapiInstance.put(`/users/${user.id}`, {
-    addresses: [`${address.id}`],
-    phone: userInfo.phone,
-    order: order.id,
-  });
 
   return order.id;
 }

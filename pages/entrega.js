@@ -19,7 +19,12 @@ export default function Delivery() {
   const cart = useCart();
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
-  const [userInfo, setUserInfo] = React.useState({});
+  const [userInfo, setUserInfo] = React.useState({
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
   const [deliveryInfo, setDeliveryInfo] = React.useState({});
 
   const disabled =
@@ -56,7 +61,7 @@ export default function Delivery() {
     createOrder({ userInfo, deliveryInfo, cartInfo })
       .then((r) => {
         localStorage.setItem('orderId', r);
-        router.push('pagamento');
+        router.push('/pagamento');
         setLoading(false);
         setError('');
       })
@@ -85,7 +90,7 @@ export default function Delivery() {
           <Button
             loading={loading}
             disabled={disabled}
-            onClick={loading ? () => {} : handleSubmit}
+            onClick={loading || disabled ? () => {} : handleSubmit}
             text="Continuar"
           />
         </Fixed>

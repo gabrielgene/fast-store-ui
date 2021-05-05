@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         ></link>
       </Head>
-      <IntlProvider locale="pt-br" timeZone="America/Sao_Paulo">
+      <IntlProvider locale="en"  timeZone="America/Sao_Paulo">
         <ApolloProvider client={client}>
           <CartProvider>
             <StylesProvider injectFirst>

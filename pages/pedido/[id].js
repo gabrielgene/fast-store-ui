@@ -64,7 +64,7 @@ export default function Order({ order }) {
   );
 }
 
-export async function getServerSideProps({ params, req }) {
+export async function getServerSideProps({ params, req, res }) {
   if (req) {
     const { jwt } = cookie.parse(req.headers.cookie);
     if (jwt) {
@@ -79,6 +79,11 @@ export async function getServerSideProps({ params, req }) {
       });
 
       return { props: { order: data.self.orders[0] } };
+    } else {
+      res.setHeader('location', '/');
+      res.statusCode = 302;
+      res.end();
+      return { props: {} };
     }
   }
 }

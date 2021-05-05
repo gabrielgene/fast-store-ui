@@ -27,7 +27,7 @@ export default function MyOrders({ orders }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req, res}) {
   if (req) {
     const { jwt } = cookie.parse(req.headers.cookie);
     if (jwt) {
@@ -41,6 +41,11 @@ export async function getServerSideProps({ req }) {
       });
 
       return { props: { orders: data.self.orders } };
+    } else {
+      res.setHeader('location', '/');
+      res.statusCode = 302;
+      res.end();
+      return { props: {} };
     }
   }
 }

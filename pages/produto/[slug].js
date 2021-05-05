@@ -31,7 +31,7 @@ export default function Product({ product }) {
 
   return (
     <>
-      <Topbar />
+      <Topbar back/>
       <Wrapper>
         <StyledImage
           src={imageUrl}
@@ -47,7 +47,6 @@ export default function Product({ product }) {
           <Button text="Adicionar ao carrinho" onClick={handleAdd} />
         </Fixed>
       </div>
-      <Topbar />
     </>
   );
 }

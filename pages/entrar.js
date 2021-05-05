@@ -36,7 +36,6 @@ export default function Login() {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
         setError('Usuario ou senha incorretos');
       });
   };

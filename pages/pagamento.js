@@ -106,7 +106,7 @@ export default function Payment() {
               onClick={() => {
                 localStorage.setItem('orderId', '');
                 emptyCart();
-                router.push('/');
+                router.push(`/pedido/${orderId}`);
               }}
             />
           </a>
