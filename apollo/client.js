@@ -9,7 +9,7 @@ export const LOCAL_URI = `${HOST}:3000`;
 
 const client = new ApolloClient({
   ssrMode: true,
-  uri: `${SERVER_URI}/graphql`,
+  uri: `${LOCAL_URI}/graphql`,
   cache: new InMemoryCache(),
 });
 
