@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'next',
       script: 'yarn',
-      args: 'prod',
+      args: 'start',
       env: {
         NODE_ENV: 'production',
       },
