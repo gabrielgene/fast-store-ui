@@ -99,7 +99,7 @@ export default function Payment() {
         <Fixed>
           <a
             target="_blank"
-            href={`https://wa.me/5571992229059?text=Ol%C3%A1%2C+segue+comprovante+do+pedido+%23${orderId}♡`}
+            href={`https://wa.me/5571991909343?text=Ol%C3%A1%2C+segue+comprovante+do+pedido+%23${orderId}♡`}
           >
             <Button
               text="Enviar comprovante"
