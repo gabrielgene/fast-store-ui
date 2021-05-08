@@ -1,3 +1,4 @@
+import React from 'react';
 import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
@@ -19,9 +20,14 @@ const StyledImage = styled(ProductImage)`
 `;
 
 export default function Product({ product }) {
-  const { imageUrl } = product;
   const { addItem } = useCart();
   const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Carregando...</div>;;
+  }
+
+  const { imageUrl } = product;
 
   const handleAdd = () => {
     addItem(product);
@@ -30,7 +36,7 @@ export default function Product({ product }) {
 
   return (
     <>
-      <Topbar back/>
+      <Topbar back />
       <Wrapper>
         <StyledImage
           src={imageUrl}
@@ -59,7 +65,7 @@ export async function getStaticPaths() {
     params: { slug: p.slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
