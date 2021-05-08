@@ -2,9 +2,8 @@ import { useCart } from 'react-use-cart';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import client from '~/apollo/client';
-import { GET_PRODUCT_BY_SLUG } from '~/apollo/queries';
+import { GET_PRODUCT_BY_SLUG, ALL_PRODUCTS } from '~/apollo/queries';
 import Topbar from '~/components/topbar';
-import { Text34 } from '~/components/text';
 import ProductImage from '~/components/product-image';
 import ProductInfo from '~/components/product-info';
 import Button from '~/components/button';
@@ -51,7 +50,19 @@ export default function Product({ product }) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
+  const { data } = await client.query({
+    query: ALL_PRODUCTS,
+  });
+
+  const paths = data.products.map((p) => ({
+    params: { slug: p.slug },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
   const { data } = await client.query({
     query: GET_PRODUCT_BY_SLUG,
     variables: { slug: params.slug },
