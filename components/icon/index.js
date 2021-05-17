@@ -5,11 +5,12 @@ import { LOCAL_URI } from '~/apollo/client';
 const myLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
   // return `${LOCAL_URI}/${src}?w=${width}&q=${quality || 75}`;
-};;
+};
 
-function Icon({ name, onClick, width = 30, height = 30 }) {
+function Icon({ name, onClick, width = 30, height = 30, style }) {
   return (
     <Image
+      style={style}
       onClick={onClick}
       loader={myLoader}
       src={`/icons/${name}.svg`}
