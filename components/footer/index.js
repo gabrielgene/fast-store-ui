@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Icon from '~/components/icon';
 
-import { Text16 } from '~/components/text';
+import { Text16, Text11 } from '~/components/text';
 
 const Wrapper = styled.div`
   background: #ffffff;
@@ -15,25 +15,23 @@ const IconWrapper = styled.div`
   align-items: center;
 `;
 
-const Link = styled.a`
-  height: 13px;
-  font-style: normal;
-  size: 11px;
-  line-height: 13px;
-  color: #9b9b9b;
-`;
-
 export default function Footer() {
   return (
     <Wrapper>
       <div>
-        <Text16 style={{ fontWeight: 900 }}>Contato</Text16>
-        <Link href="https://www.google.com/">+55 (21)99144-5368</Link>
+        <Text16 style={{ fontWeight: 900, margin: 4 }}>Contato</Text16>
+        <a href="tel:+55 (21)99144-5368" target="_blank">
+          <Text11 style={{ color: '#9B9B9B' }}>+55 (21)99144-5368</Text11>
+        </a>
       </div>
       <IconWrapper>
-        <Icon name="insta" />
+        <a href="https://www.instagram.com/lojabeandare/" target="_blank">
+          <Icon name="insta" />
+        </a>
         <div style={{ marginRight: 16 }}></div>
-        <Icon name="whats" />
+        <a href="https://wa.me/5521991445368" target="_blank">
+          <Icon name="whats" />
+        </a>
       </IconWrapper>
     </Wrapper>
   );
