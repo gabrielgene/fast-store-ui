@@ -4,6 +4,7 @@ import { FormattedDate } from 'react-intl';
 import styled from 'styled-components';
 import ClientOnly from '~/components/client-only';
 import OrderItem from '~/components/order-item';
+import Footer from '~/components/footer';
 import { Text14 } from '~/components/text';
 import client from '~/apollo/client';
 import { GET_ORDER_BY_ID } from '~/apollo/queries';
@@ -23,7 +24,7 @@ export default function Order({ order }) {
 
   return (
     <>
-      <Topbar back={true} />
+      <Topbar />
       <Wrapper>
         <Line style={{ marginBottom: 8 }}>
           <Text14>Pedido: #{id}</Text14>
@@ -55,11 +56,18 @@ export default function Order({ order }) {
         </div>
         <div style={{ display: 'flex' }}>
           <Text14 style={{ fontWeight: 'normal', marginRight: 8 }}>
+            Frete:
+          </Text14>
+          <Text14 style={{ fontWeight: 'normal' }}>{floatToPrice(20)}</Text14>
+        </div>
+        <div style={{ display: 'flex' }}>
+          <Text14 style={{ fontWeight: 'normal', marginRight: 8 }}>
             Total:
           </Text14>
           <Text14>{floatToPrice(value)}</Text14>
         </div>
       </Wrapper>
+      <Footer fixed />
     </>
   );
 }

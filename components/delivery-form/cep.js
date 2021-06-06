@@ -5,8 +5,13 @@ import getLocationByCep from '~/services/getLocationByCep';
 import Input from '~/components/input';
 import If from '~/components/if';
 
-export default function Cep({ handleChange, deliveryInfo, setDeliveryInfo }) {
-  const [debouncedValue] = useDebounce(deliveryInfo.cep, 600);
+export default function Cep({
+  handleChange,
+  deliveryInfo,
+  setDeliveryInfo,
+  cep,
+}) {
+  const [debouncedValue] = useDebounce(cep, 600);
 
   React.useEffect(() => {
     if (!!debouncedValue) {
@@ -20,7 +25,6 @@ export default function Cep({ handleChange, deliveryInfo, setDeliveryInfo }) {
         )
         .catch((err) => {
           setDeliveryInfo({
-            cep: deliveryInfo.cep,
             complement: deliveryInfo.complement,
             number: deliveryInfo.number,
           });
@@ -34,7 +38,7 @@ export default function Cep({ handleChange, deliveryInfo, setDeliveryInfo }) {
         label="CEP"
         name="cep"
         type="number"
-        value={deliveryInfo.cep || ''}
+        value={cep || ''}
         onChange={handleChange}
       />
       <If condition={!!debouncedValue}>

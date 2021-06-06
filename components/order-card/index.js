@@ -44,9 +44,17 @@ export default function OrderCard({ order }) {
           <Text14 style={{ fontWeight: 'normal' }}>
             <FormattedDate
               value={new Date(created_at)}
-              year="numeric"
-              month="numeric"
               day="2-digit"
+            />
+            {'/'}
+            <FormattedDate
+              value={new Date(created_at)}
+              month="2-digit"
+            />
+            {'/'}
+            <FormattedDate
+              value={new Date(created_at)}
+              year="numeric"
             />
           </Text14>
         </ClientOnly>

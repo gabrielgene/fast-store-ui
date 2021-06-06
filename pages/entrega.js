@@ -25,6 +25,7 @@ export default function Delivery() {
     email: '',
     password: '',
   });
+  const [cep, setCep] = React.useState('');
   const [deliveryInfo, setDeliveryInfo] = React.useState({});
 
   const disabled =
@@ -47,28 +48,33 @@ export default function Delivery() {
 
   const handleDeliveryInfoChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'cep') {
+      setCep(value);
+      return;
+    }
     setDeliveryInfo({ ...deliveryInfo, [name]: value });
   };
 
   const handleSubmit = () => {
     setLoading(true);
     setError('');
+    console.log(cart.cartTotal);
     const cartInfo = {
-      total: cart.cartTotal,
+      total: cart.cartTotal + 20,
       orderItems: cart.items,
     };
 
-    createOrder({ userInfo, deliveryInfo, cartInfo })
-      .then((r) => {
-        localStorage.setItem('orderId', r);
-        router.push('/pagamento');
-        setLoading(false);
-        setError('');
-      })
-      .catch(() => {
-        setError('Email já está em uso');
-        setLoading(false);
-      });
+    // createOrder({ userInfo, deliveryInfo, cartInfo })
+    //   .then((r) => {
+    //     localStorage.setItem('orderId', r);
+    //     router.push('/pagamento');
+    //     setLoading(false);
+    //     setError('');
+    //   })
+    //   .catch(() => {
+    //     setError('Email já está em uso');
+    //     setLoading(false);
+    //   });
   };
 
   return (
@@ -80,13 +86,16 @@ export default function Delivery() {
         <CepForm
           handleChange={handleDeliveryInfoChange}
           deliveryInfo={deliveryInfo}
+          cep={cep}
           setDeliveryInfo={setDeliveryInfo}
         />
       </Wrapper>
       <div style={{ backgroundColor: '#F9F9F9' }}>
         <div style={{ marginBottom: 122 }} />
         <Fixed>
-          {error && <Text11 style={{ marginBottom: 8, color: 'red'  }}>{error}</Text11>}
+          {error && (
+            <Text11 style={{ marginBottom: 8, color: 'red' }}>{error}</Text11>
+          )}
           <Button
             loading={loading}
             disabled={disabled}

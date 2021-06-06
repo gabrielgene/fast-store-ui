@@ -54,7 +54,7 @@ export default function Payment() {
         <Card style={{ marginBottom: 16 }}>
           <Inline>
             <StyledText14>Frete:</StyledText14>
-            <StyledText14>R$10,00</StyledText14>
+            <StyledText14>R$20,00</StyledText14>
           </Inline>
           <Inline>
             <StyledText14>Produtos:</StyledText14>
@@ -64,7 +64,7 @@ export default function Payment() {
           <Inline style={{ marginTop: 8 }}>
             <StyledText14 style={{ fontWeight: 'bold' }}>Total:</StyledText14>
             <StyledText14 style={{ fontWeight: 'bold' }}>
-              {floatToPrice(cartTotal + 10)}
+              {floatToPrice(cartTotal + 20)}
             </StyledText14>
           </Inline>
         </Card>
@@ -99,7 +99,7 @@ export default function Payment() {
         <Fixed>
           <a
             target="_blank"
-            href={`https://wa.me/5571991909343?text=Ol%C3%A1%2C+segue+comprovante+do+pedido+%23${orderId}♡`}
+            href={`https://wa.me/5571992621790?text=Ol%C3%A1%2C+segue+comprovante+do+pedido+%23${orderId}♡`}
           >
             <Button
               text="Enviar comprovante"
