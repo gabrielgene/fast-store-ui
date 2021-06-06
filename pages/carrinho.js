@@ -42,7 +42,7 @@ export default function Cart() {
     }
     setLoading(true);
     const cartInfo = {
-      total: cart.cartTotal,
+      total: cart.cartTotal + 20,
       orderItems: cart.items,
     };
     createLoggedOrder({ cartInfo })

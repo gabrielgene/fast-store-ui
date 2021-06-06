@@ -6,6 +6,7 @@ import Topbar from '~/components/topbar';
 import { Text34 } from '~/components/text';
 import cookie from 'cookie';
 import OrderCard from '~/components/order-card';
+import Footer from '~/components/footer';
 
 const Wrapper = styled.div`
   padding: 16px 24px;
@@ -23,6 +24,7 @@ export default function MyOrders({ orders }) {
           ))}
         </div>
       </Wrapper>
+      <Footer fixed />
     </>
   );
 }

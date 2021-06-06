@@ -4,13 +4,13 @@ import { ALL_PRODUCTS } from '~/apollo/queries';
 import Topbar from '~/components/topbar';
 import { Text34 } from '~/components/text';
 import ProductList from '~/components/product-list';
+import Footer from '~/components/footer';
 
 const Wrapper = styled.div`
   padding: 16px;
 `;
 
 export default function Products({ products }) {
-
   return (
     <>
       <Topbar />
@@ -18,6 +18,7 @@ export default function Products({ products }) {
         <Text34>Produtos</Text34>
         <ProductList products={products} />
       </Wrapper>
+      <Footer />
     </>
   );
 }
