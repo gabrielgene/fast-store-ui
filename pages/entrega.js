@@ -64,17 +64,17 @@ export default function Delivery() {
       orderItems: cart.items,
     };
 
-    // createOrder({ userInfo, deliveryInfo, cartInfo })
-    //   .then((r) => {
-    //     localStorage.setItem('orderId', r);
-    //     router.push('/pagamento');
-    //     setLoading(false);
-    //     setError('');
-    //   })
-    //   .catch(() => {
-    //     setError('Email já está em uso');
-    //     setLoading(false);
-    //   });
+    createOrder({ userInfo, deliveryInfo, cartInfo })
+      .then((r) => {
+        localStorage.setItem('orderId', r);
+        router.push('/pagamento');
+        setLoading(false);
+        setError('');
+      })
+      .catch(() => {
+        setError('Email já está em uso');
+        setLoading(false);
+      });
   };
 
   return (

@@ -6,7 +6,7 @@ export default function User({ handleChange, userInfo }) {
   return (
     <>
       <Input
-        label="Name"
+        label="Nome"
         name="name"
         onChange={handleChange}
         value={userInfo.name}
@@ -28,7 +28,7 @@ export default function User({ handleChange, userInfo }) {
         value={userInfo.email || ''}
       />
       <Input
-        label="Password"
+        label="Senha"
         type="password"
         name="password"
         onChange={handleChange}
