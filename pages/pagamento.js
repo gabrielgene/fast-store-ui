@@ -82,7 +82,7 @@ export default function Payment() {
           <StyledText14>Conta corrente: 62138134-6</StyledText14>
           <StyledText14>Banco 260 - Nu Pagamentos S.A.</StyledText14>
           <StyledText14>
-            Titular: Juliana Jennifer Gomes de Oliveira
+            Titular: Juliana Jennifer Gomes de Oliveira Santos
           </StyledText14>
           <StyledText14>CPF: 857.851.075-54</StyledText14>
           <br />
