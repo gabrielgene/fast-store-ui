@@ -78,8 +78,9 @@ export default function Payment() {
           </StyledText14>
           <br />
           <StyledText14>NUBANK</StyledText14>
-          <StyledText14>Agência:</StyledText14>
-          <StyledText14>Conta corrente:</StyledText14>
+          <StyledText14>Agência: 0001</StyledText14>
+          <StyledText14>Conta corrente: 62138134-6</StyledText14>
+          <StyledText14>Banco 260 - Nu Pagamentos S.A.</StyledText14>
           <StyledText14>
             Titular: Juliana Jennifer Gomes de Oliveira
           </StyledText14>
