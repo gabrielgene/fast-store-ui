@@ -86,7 +86,7 @@ export default function Payment() {
           </StyledText14>
           <StyledText14>CPF: 857.851.075-54</StyledText14>
           <br />
-          <StyledText14>PIX NUBANK: 85785107554</StyledText14>
+          <StyledText14>Chave PIX: 85785107554</StyledText14>
           <br />
           <StyledText14>
             O próximo passo é enviar o seu nome completo, número do pedido e
